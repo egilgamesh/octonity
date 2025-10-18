@@ -1,95 +1,85 @@
-<html>
-  <title>Coming soon</title>
-  <style>
-  body {
-  background: #00091B;
-  color: #fff;
-}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octonity - Coming Soon</title>
+    <style>
+      body {
+        background: #00091B;
+        color: #fff;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Poppins', sans-serif;
+      }
 
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
 
-@keyframes fadeIn {
-  from {top: 20%; opacity: 0;}
-  to {top: 100; opacity: 1;}
-  
-}
+      .wrapper {
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
 
-@-webkit-keyframes fadeIn {
-  from {top: 20%; opacity: 0;}
-  to {top: 100; opacity: 1;}
-  
-}
+      img {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 200px;
+        height: auto;
+      }
 
-.wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  animation: fadeIn 1000ms ease;
-  -webkit-animation: fadeIn 1000ms ease;
-  
-}
+      h2 {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0;
+      }
 
-h1 {
-  font-size: 50px;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 0;
-  line-height: 1;
-  font-weight: 700;
-  text-align: center;
-}
+      .dot {
+        color: #4FEBFE;
+      }
 
-.dot {
-  color: #4FEBFE;
-}
+      .icons {
+        margin-top: 25px;
+      }
 
-p {
-  text-align: center;
-  margin: 18px;
-  font-family: 'Muli', sans-serif;
-  font-weight: normal;
-  
-}
+      .icons a {
+        color: #00091B;
+        background: #fff;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
 
-.icons {
-  text-align: center;
-  
-}
+      .icons a:hover {
+        color: #fff;
+        background: none;
+        transform: scale(1.2);
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-.icons i {
-  color: #00091B;
-  background: #fff;
-  height: 15px;
-  width: 15px;
-  padding: 13px;
-  margin: 0 10px;
-  border-radius: 50px;
-  border: 2px solid #fff;
-  transition: all 200ms ease;
-  text-decoration: none;
-  position: relative;
-}
-
-.icons i:hover, .icons i:active {
-  color: #fff;
-  background: none;
-  cursor: pointer !important;
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  text-decoration: none;
-  
-}
-  </style>
-  
   <body>
     <div class="wrapper">
-  <h1>coming soon<span class="dot">.</span></h1>
-  <p>Stay in touch.</p>
-  <div class="icons">
-    <a href=""><i class="fa fa-twitter"></i></a>
-    <a href=""><i class="fa fa-youtube-play"></i></a>
-    <a href=""><i class="fa fa-paper-plane"></i></a>
-  </div>
- </div>
+      <img src="https://raw.githubusercontent.com/egilgamesh/octonity/refs/heads/main/logo.png" alt="Octonity Logo">
+      <h2>Coming Soon<span class="dot">.</span></h2>
+      <div class="icons">
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-youtube-play"></i></a>
+        <a href="#"><i class="fa fa-paper-plane"></i></a>
+      </div>
+    </div>
   </body>
 </html>
