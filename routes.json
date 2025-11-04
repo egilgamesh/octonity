@@ -1,16 +1,28 @@
 {
   "routes": [
     {
-      "route": "/",
-      "rewrite": "/index.html"
-    },
-    {
       "route": "/*",
-      "rewrite": "/index.html"
+      "redirect": "https://www.octonity.com",
+      "statusCode": 301
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/robots.txt", "/images/*", "/css/*", "/js/*", "/assets/*"]
+    "exclude": [
+      "/robots.txt",
+      "/favicon.ico",
+      "/images/*",
+      "/css/*",
+      "/js/*",
+      "/assets/*"
+    ]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  },
+  "globalHeaders": {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
   }
 }
