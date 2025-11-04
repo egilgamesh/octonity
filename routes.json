@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/*",
+      "rewrite": "/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/robots.txt", "/images/*", "/css/*", "/js/*", "/assets/*"]
+  }
+}
