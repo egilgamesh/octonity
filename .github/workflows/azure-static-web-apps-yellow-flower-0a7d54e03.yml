@@ -23,15 +23,11 @@ jobs:
           submodules: true
           lfs: false
 
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
         with:
           script: |
-            const core = require('@actions/core')
             return await core.getIDToken()
           result-encoding: string
 
@@ -41,8 +37,8 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_FLOWER_0A7D54E03 }}
           action: "upload"
-          app_location: "/"          # Path where index.html exists
-          output_location: "/"       # Root folder
+          app_location: "/"        # folder containing index.html
+          output_location: "/"     # root folder
           github_id_token: ${{ steps.idtoken.outputs.result }}
 
   close_pull_request_job:
