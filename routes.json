@@ -1,21 +1,21 @@
 {
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "/robots.txt",
-      "/favicon.ico",
-      "/images/*",
-      "/css/*",
-      "/js/*",
-      "/assets/*"
-    ]
-  },
-  "responseOverrides": {
-    "404": {
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/index.html",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/?*",
       "rewrite": "/index.html"
     }
-  },
-  "globalHeaders": {
-    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/robots.txt", "/images/*", "/css/*", "/js/*", "/assets/*"]
   }
 }
