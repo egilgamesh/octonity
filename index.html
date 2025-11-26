@@ -4,668 +4,225 @@
   <meta charset="UTF-8" />
   <title>Octonity · IT & Cloud Consulting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Octonity provides IT consulting, cloud services, and infrastructure solutions for modern businesses."
-  />
   <style>
     :root {
-      --bg: #020202;
-      --bg-soft: #050505;
-      --bg-card: #0a0a0a;
-      --primary: #ffffff;          /* main accent is white */
-      --primary-soft: rgba(255, 255, 255, 0.08);
-      --text-main: #f5f5f5;
-      --text-soft: #a3a3a3;
-      --border-soft: #262626;
-      --radius-lg: 18px;
-      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.9);
-      --max-width: 1080px;
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e5e5e5;
+      --accent: #000000;
+      --max-width: 960px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, #111111 0, #020202 50%, #000000 100%);
-      color: var(--text-main);
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 1.4rem;
+      padding: 0 1.2rem;
     }
 
-    /* NAVBAR */
-    header.navbar {
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #fff;
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.7));
-      border-bottom: 1px solid #111111;
+      z-index: 10;
     }
 
-    .nav-inner {
+    .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0.9rem 0;
-    }
-
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 0.6rem;
+      padding: 0.8rem 0;
     }
 
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      position: relative;
-      background:
-        radial-gradient(circle at 25% 15%, #f5f5f5, #b3b3b3 40%, #525252 70%, #020202 100%);
-      overflow: hidden;
-      box-shadow: 0 0 26px rgba(255, 255, 255, 0.28);
-    }
-
-    .brand-logo::before,
-    .brand-logo::after {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.7);
-      transform: rotate(22deg);
-    }
-
-    .brand-title {
+    .logo {
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      font-size: 0.85rem;
     }
 
-    .brand-sub {
+    .logo span {
+      font-weight: 400;
       font-size: 0.7rem;
-      color: var(--text-soft);
-      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
       letter-spacing: 0.18em;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 1.4rem;
-      font-size: 0.88rem;
+      gap: 1rem;
+      font-size: 0.9rem;
     }
 
     .nav-links a {
-      color: var(--text-soft);
-      transition: color 0.16s ease, opacity 0.16s ease;
+      color: var(--muted);
     }
 
     .nav-links a:hover {
-      color: var(--primary);
-      opacity: 0.95;
+      color: var(--accent);
     }
 
-    .nav-cta {
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: rgba(0, 0, 0, 0.9);
-      color: var(--primary);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.16s ease, transform 0.12s ease, box-shadow 0.12s ease;
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-
-    .nav-cta:hover {
-      background: #000000;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    .nav-toggle span {
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: #f5f5f5;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-toggle {
-        display: flex;
-      }
-    }
-
-    /* HERO */
+    /* HERO – BIG */
     .hero {
-      padding: 3.5rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
     }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: center;
+      padding: 3rem 0 3rem;
+      text-align: left;
+      max-width: 680px;
     }
 
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.18rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid #404040;
-      background: rgba(0, 0, 0, 0.85);
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      margin-bottom: 1.1rem;
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #fafafa;
-      box-shadow: 0 0 0 6px rgba(250, 250, 250, 0.18);
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.7rem;
+      font-size: clamp(2.4rem, 5vw, 3.1rem);
+      line-height: 1.05;
+      margin-bottom: 0.8rem;
     }
 
-    .hero-title span {
-      color: #ffffff;
-      text-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-text {
-      font-size: 0.97rem;
-      color: var(--text-soft);
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
       max-width: 32rem;
-      margin-bottom: 1.7rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
-      margin-bottom: 1.7rem;
+      margin-bottom: 1.3rem;
     }
 
-    .btn-primary {
+    .btn-primary,
+    .btn-secondary {
+      font-size: 0.95rem;
       padding: 0.8rem 1.6rem;
       border-radius: 999px;
-      border: none;
+      border: 1px solid #000;
       cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background: #ffffff;
-      color: #000000;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      background: #000;
+      color: #fff;
     }
 
-    .btn-primary:hover {
-      background: #f5f5f5;
-      transform: translateY(-1px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 1);
-    }
-
-    .btn-outline {
-      padding: 0.8rem 1.5rem;
-      border-radius: 999px;
-      border: 1px solid #404040;
-      background: transparent;
-      color: var(--text-main);
-      font-size: 0.92rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .btn-outline span {
-      font-size: 1.1rem;
-      transform: translateY(1px);
+    .btn-secondary {
+      background: #fff;
+      color: #000;
     }
 
     .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.3rem;
       font-size: 0.8rem;
-      color: var(--text-soft);
+      color: var(--muted);
     }
 
-    .hero-meta strong {
-      color: var(--primary);
-    }
-
-    /* HERO CARD */
-    .hero-card {
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), #020202 60%);
-      border: 1px solid #404040;
-      padding: 1.4rem 1.3rem 1.3rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 120% -30%, rgba(255, 255, 255, 0.23), transparent 52%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-      font-size: 0.82rem;
-    }
-
-    .hero-card-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-soft);
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-card-row {
-      display: flex;
-      gap: 0.9rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-metric {
-      flex: 1;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.88);
-      border: 1px solid #404040;
-      padding: 0.7rem 0.75rem;
-    }
-
-    .metric-label {
-      font-size: 0.72rem;
-      color: var(--text-soft);
-      margin-bottom: 0.15rem;
-    }
-
-    .metric-value {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .metric-tag {
-      font-size: 0.7rem;
-      color: #e5e5e5;
-    }
-
-    .hero-stack {
-      margin-top: 0.7rem;
-    }
-
-    .stack-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.4rem;
-    }
-
-    .chip {
-      padding: 0.18rem 0.65rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      border: 1px dashed #525252;
-      background: rgba(0, 0, 0, 0.9);
-      color: var(--text-soft);
-    }
-
-    .hero-status {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.8rem;
-      font-size: 0.74rem;
-      color: var(--text-soft);
-    }
-
-    .hero-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.22rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(250, 250, 250, 0.08);
-      color: #f5f5f5;
-    }
-
-    .hero-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #ffffff;
-    }
-
-    /* SECTIONS */
+    /* SECTION GENERIC */
     section {
-      padding: 2.6rem 0;
+      padding: 2.4rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-head {
-      margin-bottom: 1.8rem;
+    .section-header {
+      margin-bottom: 1.4rem;
     }
 
-    .section-label {
+    .section-kicker {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--primary);
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.93rem;
-      color: var(--text-soft);
-      max-width: 32rem;
-    }
-
-    /* SERVICES */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-
-    @media (max-width: 980px) {
-      .grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 680px) {
-      .grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 1.2rem 1.2rem 1.1rem;
-      font-size: 0.86rem;
-      position: relative;
-      overflow: hidden;
-      transition: border 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .card:hover {
-      border-color: rgba(255, 255, 255, 0.6);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .card-title {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .card-text {
-      color: var(--text-soft);
-      margin-bottom: 0.6rem;
-    }
-
-    .card-list {
-      list-style: none;
-      color: var(--text-soft);
-      font-size: 0.82rem;
-    }
-
-    .card-list li {
-      display: flex;
-      gap: 0.4rem;
+      letter-spacing: 0.16em;
+      color: var(--muted);
       margin-bottom: 0.3rem;
     }
 
-    .card-list li::before {
-      content: "•";
-      color: var(--primary);
-      margin-top: 0.08rem;
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
     }
 
-    /* CLOUD SECTION */
-    .two-col {
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 30rem;
+    }
+
+    /* SERVICES – SIMPLE LIST */
+    .services-list {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.6rem;
-      align-items: flex-start;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
     }
 
-    @media (max-width: 900px) {
-      .two-col {
+    @media (max-width: 640px) {
+      .services-list {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .bullet-list {
-      list-style: none;
+    .service-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem;
       font-size: 0.9rem;
-      color: var(--text-soft);
     }
 
-    .bullet-list li {
-      display: flex;
-      gap: 0.55rem;
-      margin-bottom: 0.7rem;
+    .service-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
     }
 
-    .bullet-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      color: var(--primary);
-      margin-top: 0.12rem;
-      flex-shrink: 0;
-    }
-
-    .bullet-main {
-      color: #f5f5f5;
-      font-weight: 500;
-    }
-
-    .bullet-sub {
+    .service-item p {
+      color: var(--muted);
       font-size: 0.86rem;
     }
 
-    .cloud-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.8rem;
-    }
-
-    .cloud-tag {
-      padding: 0.18rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid #404040;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-      background: rgba(0, 0, 0, 0.9);
-    }
-
-    .cloud-providers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    @media (max-width: 680px) {
-      .cloud-providers {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .provider-card {
-      background: var(--bg-card);
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 0.9rem 0.9rem 0.8rem;
-      font-size: 0.82rem;
-    }
-
-    .provider-name {
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-
-    .provider-role {
-      font-size: 0.76rem;
-      color: var(--text-main);
-      margin-bottom: 0.4rem;
-    }
-
-    .provider-list {
-      list-style: none;
-      color: var(--text-soft);
-    }
-
-    .provider-list li {
-      margin-bottom: 0.2rem;
-    }
-
-    /* WHY SECTION */
-    .steps {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      margin-top: 0.6rem;
-    }
-
-    .step {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .step-number {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 1px solid #525252;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      color: var(--primary);
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
     /* CONTACT */
-    .contact-card {
-      margin-top: 2rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 1.7rem 1.6rem;
+    .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 1.6rem;
+      margin-top: 1.4rem;
     }
 
-    @media (max-width: 900px) {
-      .contact-card {
+    @media (max-width: 800px) {
+      .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
     .contact-text {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-      margin-bottom: 0.7rem;
-    }
-
-    .contact-highlight {
       font-size: 0.9rem;
-      margin-bottom: 0.7rem;
+      color: var(--muted);
+      max-width: 28rem;
     }
 
-    .contact-form {
+    form {
       display: grid;
-      gap: 0.8rem;
+      gap: 0.9rem;
+      font-size: 0.9rem;
     }
 
     .field {
@@ -674,442 +231,123 @@
       gap: 0.2rem;
     }
 
-    .field label {
+    label {
       font-size: 0.8rem;
-      color: var(--text-soft);
+      color: var(--muted);
     }
 
-    .field input,
-    .field textarea,
-    .field select {
-      padding: 0.6rem 0.7rem;
-      border-radius: 10px;
-      border: 1px solid #404040;
-      background: #020202;
-      color: var(--text-main);
-      font-size: 0.85rem;
-      outline: none;
+    input,
+    textarea {
+      padding: 0.55rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font: inherit;
+      color: var(--text);
+      background: #fff;
     }
 
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: #6b6b6b;
-    }
-
-    .field textarea {
+    textarea {
       min-height: 90px;
       resize: vertical;
     }
 
-    .field small {
-      font-size: 0.7rem;
-      color: var(--text-soft);
+    small {
+      font-size: 0.75rem;
+      color: var(--muted);
     }
 
     /* FOOTER */
     footer {
-      margin-top: 2rem;
-      padding: 1.2rem 0 1.8rem;
-      border-top: 1px solid #111111;
+      padding: 1.3rem 0 1.7rem;
       font-size: 0.8rem;
-      color: var(--text-soft);
+      color: var(--muted);
     }
 
     .footer-inner {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 0.8rem;
-      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
     }
 
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
       gap: 0.8rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
+      flex-wrap: wrap;
     }
   </style>
 </head>
 <body>
-<div class="page">
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <div>
-          <div class="brand-title">OCTONITY</div>
-          <div class="brand-sub">IT · CLOUD · CONSULTING</div>
-        </div>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo">
+        OCTONITY
+        <span>IT · CLOUD · CONSULTING</span>
       </a>
-
       <nav class="nav-links">
         <a href="#services">Services</a>
-        <a href="#cloud">Cloud</a>
-        <a href="#why">Why us</a>
         <a href="#contact">Contact</a>
-        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Free discovery call
-        </button>
       </nav>
-
-      <button class="nav-toggle" aria-label="Open navigation">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
   <main id="top">
-    <!-- HERO -->
+    <!-- HERO (BIG) -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            IT & cloud consulting for growing teams
-          </div>
-
+      <div class="container">
+        <div class="hero-inner">
+          <p class="hero-kicker">IT & cloud consultancy</p>
           <h1 class="hero-title">
-            From legacy systems to <span>cloud-ready platforms.</span>
+            We help you modernise your systems and move safely to the cloud.
           </h1>
-
-          <p class="hero-text">
-            Octonity helps you modernize applications, build secure cloud infrastructure, and
-            streamline delivery with DevOps — without losing control over cost and complexity.
+          <p class="hero-subtitle">
+            Octonity works with you on architecture, cloud, and DevOps – in a simple, practical way that fits your team and business.
           </p>
 
           <div class="hero-actions">
-            <button
-              class="btn-primary"
-              onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
-            >
-              Talk to an architect
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Book a short call
             </button>
-            <button
-              class="btn-outline"
-              onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})"
-            >
-              View IT services <span>↗</span>
+            <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+              See what we do
             </button>
           </div>
 
-          <div class="hero-meta">
-            <span><strong>Cloud-focused</strong> – Azure, AWS & hybrid</span>
-            <span><strong>Hands-on delivery</strong>, not just slides</span>
-          </div>
+          <p class="hero-meta">
+            Azure · AWS · .NET · modern backend & integration
+          </p>
         </div>
-
-        <!-- HERO CARD -->
-        <aside class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-card-title">Engagement snapshot</div>
-
-            <div class="hero-card-row">
-              <div class="hero-metric">
-                <div class="metric-label">Typical PoC timeline</div>
-                <div class="metric-value">4–6 weeks</div>
-                <div class="metric-tag">from idea to running demo</div>
-              </div>
-              <div class="hero-metric">
-                <div class="metric-label">Cost optimization</div>
-                <div class="metric-value">15–30%</div>
-                <div class="metric-tag">cloud spend reduction</div>
-              </div>
-            </div>
-
-            <div class="hero-stack">
-              <div class="metric-label">Example tech stack</div>
-              <div class="stack-chips">
-                <span class="chip">Azure · AWS</span>
-                <span class="chip">.NET · Node.js</span>
-                <span class="chip">Kubernetes · Docker</span>
-                <span class="chip">CI/CD · IaC</span>
-              </div>
-            </div>
-
-            <div class="hero-status">
-              <div class="hero-status-pill">
-                <span class="hero-status-dot"></span>
-                Remote-friendly · EU timezones
-              </div>
-              <span>First response &lt; 24h</span>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- SERVICES (VERY SIMPLE) -->
     <section id="services">
       <div class="container">
-        <div class="section-head">
-          <div class="section-label">Services</div>
-          <h2 class="section-title">What Octonity can help you with.</h2>
+        <div class="section-header">
+          <p class="section-kicker">Services</p>
+          <h2 class="section-title">What we can help with.</h2>
           <p class="section-subtitle">
-            We cover architecture, implementation, and ongoing support — always tailored to where
-            your organisation is today.
+            A small, focused set of services around cloud and modern backend development.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="card-icon">☁️</div>
-            <h3 class="card-title">Cloud strategy & migration</h3>
-            <p class="card-text">
-              Move critical workloads to the cloud safely and predictably.
-            </p>
-            <ul class="card-list">
-              <li>Cloud readiness & roadmap</li>
-              <li>Azure & AWS landing zones</li>
-              <li>Lift-and-shift vs. modernize</li>
-              <li>Security and governance</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⚙️</div>
-            <h3 class="card-title">DevOps & automation</h3>
-            <p class="card-text">
-              Shorter releases with robust CI/CD and infrastructure as code.
-            </p>
-            <ul class="card-list">
-              <li>GitHub & Azure DevOps pipelines</li>
-              <li>Docker & Kubernetes deployments</li>
-              <li>Terraform / Bicep templates</li>
-              <li>Monitoring & on-call basics</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">💻</div>
-            <h3 class="card-title">Application development</h3>
-            <p class="card-text">
-              Design and build APIs, backends, and frontends that scale with you.
-            </p>
-            <ul class="card-list">
-              <li>.NET, Node.js, and REST APIs</li>
-              <li>React / Angular frontends</li>
-              <li>Integration with SaaS platforms</li>
-              <li>Code reviews & refactoring</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🔐</div>
-            <h3 class="card-title">Security & compliance basics</h3>
-            <p class="card-text">
-              Strengthen your security posture without blocking delivery.
-            </p>
-            <ul class="card-list">
-              <li>Identity & access design</li>
-              <li>Network segmentation</li>
-              <li>Secrets & key management</li>
-              <li>Hardening & patch strategy</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">📊</div>
-            <h3 class="card-title">Data & integration</h3>
-            <p class="card-text">
-              Connect systems and make operational data available for decisions.
-            </p>
-            <ul class="card-list">
-              <li>Messaging & event-driven patterns</li>
-              <li>Operational reporting dashboards</li>
-              <li>API gateways & integration</li>
-              <li>Data quality foundations</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🤝</div>
-            <h3 class="card-title">Advisory & coaching</h3>
-            <p class="card-text">
-              Support your internal teams with external experience.
-            </p>
-            <ul class="card-list">
-              <li>Architecture clinics & reviews</li>
-              <li>Decision sparring for CTO / lead devs</li>
-              <li>Internal tech talks & workshops</li>
-              <li>Long-term advisory retainers</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLOUD -->
-    <section id="cloud">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label">Cloud services</div>
-          <h2 class="section-title">Octonity as your cloud service partner.</h2>
-          <p class="section-subtitle">
-            We focus on Azure and AWS, but always start from your requirements — not from a single vendor.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <div>
-            <ul class="bullet-list">
-              <li>
-                <div class="bullet-icon">✓</div>
-                <div>
-                  <div class="bullet-main">Solid foundations first</div>
-                  <div class="bullet-sub">
-                    Identity, network, policies, and logging are in place before you deploy the first production app.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="bullet-icon">✓</div>
-                <div>
-                  <div class="bullet-main">Cost-conscious design</div>
-                  <div class="bullet-sub">
-                    Autoscaling, right-sizing, and storage strategies that keep your bill predictable — with monthly tuning if needed.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="bullet-icon">✓</div>
-                <div>
-                  <div class="bullet-main">Hybrid & real-world integration</div>
-                  <div class="bullet-sub">
-                    Connect cloud workloads to on-prem systems, VPNs, and identity providers without fragile “temporary hacks”.
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <div class="cloud-tags">
-              <span class="cloud-tag">Azure · Azure AD · AKS</span>
-              <span class="cloud-tag">AWS · EKS · ECS</span>
-              <span class="cloud-tag">CI/CD · IaC · GitOps</span>
-              <span class="cloud-tag">Zero-trust mindset</span>
-            </div>
+        <div class="services-list">
+          <div class="service-item">
+            <h3>Cloud & infrastructure</h3>
+            <p>Azure / AWS setup, environments, and basic security foundations.</p>
           </div>
-
-          <div class="cloud-providers">
-            <div class="provider-card">
-              <div class="provider-name">Microsoft Azure</div>
-              <div class="provider-role">Primary focus</div>
-              <ul class="provider-list">
-                <li>Enterprise landing zones</li>
-                <li>App Service & AKS workloads</li>
-                <li>Azure SQL, Storage, and Functions</li>
-              </ul>
-            </div>
-
-            <div class="provider-card">
-              <div class="provider-name">Amazon Web Services</div>
-              <div class="provider-role">Selective workloads</div>
-              <ul class="provider-list">
-                <li>Scalable compute & containers</li>
-                <li>Serverless backends</li>
-                <li>Networking & security design</li>
-              </ul>
-            </div>
-
-            <div class="provider-card">
-              <div class="provider-name">Hybrid environments</div>
-              <div class="provider-role">Cloud + on-prem</div>
-              <ul class="provider-list">
-                <li>VPN, private links & identity</li>
-                <li>Gradual migration patterns</li>
-                <li>Unified monitoring & logging</li>
-              </ul>
-            </div>
-
-            <div class="provider-card">
-              <div class="provider-name">Multi-tenant solutions</div>
-              <div class="provider-role">SaaS scenarios</div>
-              <ul class="provider-list">
-                <li>Tenant isolation strategies</li>
-                <li>Scaling databases and services</li>
-                <li>Metering & billing foundations</li>
-              </ul>
-            </div>
+          <div class="service-item">
+            <h3>DevOps & delivery</h3>
+            <p>CI/CD pipelines, infrastructure as code, and simple monitoring.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY OCTONITY -->
-    <section id="why">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label">Why Octonity</div>
-          <h2 class="section-title">Engineering depth with business context.</h2>
-          <p class="section-subtitle">
-            We’ve been on the other side — running real products. That’s why we care about reliability,
-            maintainability, and business impact, not just “cool tech”.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <div>
-            <ul class="bullet-list">
-              <li>
-                <div class="bullet-icon">★</div>
-                <div>
-                  <div class="bullet-main">Pragmatic solutions</div>
-                  <div class="bullet-sub">
-                    We balance ideal architecture with delivery pressure. If something can stay simple, it will.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="bullet-icon">★</div>
-                <div>
-                  <div class="bullet-main">Knowledge transfer</div>
-                  <div class="bullet-sub">
-                    Your team gets documentation, diagrams, and live sessions — so they can own the system long-term.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="bullet-icon">★</div>
-                <div>
-                  <div class="bullet-main">Transparent communication</div>
-                  <div class="bullet-sub">
-                    Clear risks, clear trade-offs, and realistic timelines. No magic and no surprises in the last week.
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div class="service-item">
+            <h3>Backend & APIs</h3>
+            <p>.NET / Node.js services, integrations, and refactoring of legacy code.</p>
           </div>
-
-          <div class="steps">
-            <div class="contact-highlight"><strong>How we usually work together</strong></div>
-
-            <div class="step">
-              <div class="step-number">1</div>
-              <div>
-                <strong>Discovery & scoping</strong><br />
-                Short call to understand your systems, constraints, and timelines. We agree on where we can add the most value.
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">2</div>
-              <div>
-                <strong>Workshops & design</strong><br />
-                Architecture or cloud workshops with your team. We deliver concrete diagrams, patterns, and a plan.
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-number">3</div>
-              <div>
-                <strong>Implementation & support</strong><br />
-                We implement together, set up automation and monitoring, and can stay involved as advisors as your platform grows.
-              </div>
-            </div>
+          <div class="service-item">
+            <h3>Advisory & reviews</h3>
+            <p>Architecture reviews, decision support, and technical coaching.</p>
           </div>
         </div>
       </div>
@@ -1118,70 +356,40 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="container">
-        <div class="section-head">
-          <div class="section-label">Contact</div>
-          <h2 class="section-title">Let’s discuss your IT challenges.</h2>
+        <div class="section-header">
+          <p class="section-kicker">Contact</p>
+          <h2 class="section-title">Tell us briefly what you need.</h2>
           <p class="section-subtitle">
-            Tell us briefly about your situation, technology stack, and goals. We’ll get back within one business day
-            with suggested times for an initial call.
+            A few lines about your systems and goals are enough. We’ll reply with a suggestion for a short call.
           </p>
         </div>
 
-        <div class="contact-card">
-          <div>
-            <p class="contact-text">
-              Unsure if you need a full project, a short architecture review, or just external feedback on key decisions?
-              The first conversation is free and non-binding.
+        <div class="contact-grid">
+          <div class="contact-text">
+            <p>
+              You can use this form, or send an email to
+              <strong>contact@octonity.com</strong> (example address).
             </p>
-            <p class="contact-highlight">
-              Prefer email? Reach us at <strong>contact@octonity.com</strong> (example address).
-            </p>
-            <p class="contact-text">
-              We’re used to working remotely with distributed teams and can adapt to your tools and workflows.
+            <p style="margin-top:0.7rem;">
+              We are used to working remotely with distributed teams and can adapt to your tools (GitHub, Azure DevOps, Jira, etc.).
             </p>
           </div>
 
-          <form class="contact-form">
+          <form>
             <div class="field">
               <label for="name">Name *</label>
-              <input id="name" type="text" placeholder="Your full name" required />
+              <input id="name" type="text" required />
             </div>
-
             <div class="field">
-              <label for="company">Company</label>
-              <input id="company" type="text" placeholder="Company or team name" />
+              <label for="email">Email *</label>
+              <input id="email" type="email" required />
             </div>
-
             <div class="field">
-              <label for="email">Work email *</label>
-              <input id="email" type="email" placeholder="you@company.com" required />
+              <label for="message">Message *</label>
+              <textarea id="message" placeholder="Current setup, main problems, and what you want to improve." required></textarea>
+              <small>We will only use this information to respond to your request.</small>
             </div>
-
-            <div class="field">
-              <label for="topic">Main topic</label>
-              <select id="topic">
-                <option>Cloud & infrastructure</option>
-                <option>DevOps & CI/CD</option>
-                <option>Application architecture</option>
-                <option>Modernization & refactoring</option>
-                <option>Advisory / coaching</option>
-                <option>Other / not sure yet</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="message">Short description *</label>
-              <textarea
-                id="message"
-                placeholder="Current systems, key problems, and what success would look like."
-                required
-              ></textarea>
-              <small>
-                By submitting, you agree that Octonity may use this information to contact you about this request.
-              </small>
-            </div>
-
-            <button type="submit" class="btn-primary">Send message</button>
+            <button type="submit" class="btn-primary">Send</button>
           </form>
         </div>
       </div>
@@ -1191,18 +399,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <span>© <span id="year"></span> Octonity. All rights reserved.</span>
+      <span>© <span id="year"></span> Octonity.</span>
       <div class="footer-links">
         <a href="#top">Back to top</a>
-        <a href="#">Imprint</a>
-        <a href="#">Privacy</a>
       </div>
     </div>
   </footer>
-</div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
